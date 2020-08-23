@@ -56,6 +56,7 @@ def setup():
 
 
 def scrape(key, page):
+    print("Entered Scrape")
     logger.info("Entered Scrape")
     logger.debug(f"Param passed: {key}, {page}")
 
@@ -74,7 +75,7 @@ def scrape(key, page):
     response = requests.get(url, headers=headers, proxies=proxies)
     if response.ok:
         logger.info("Respnose - Ok")
-
+        print("Respnose - Ok")
         logger.debug("Parssing HTML")
         page = bs(response.content)
         logger.info("HTML parssed")
@@ -123,6 +124,7 @@ def scrape(key, page):
                 logger.warning("NOT FOUND. CONTINUE SEARCH")
         return results
     else:
+        print("Respnose - Failed")
         logger.info("Respnose - Failed")
         logger.warning(f"Error code: {response.status_code}")
         return None
