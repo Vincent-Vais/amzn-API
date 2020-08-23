@@ -61,7 +61,6 @@ def setup():
 
 
 def scrape(key, page):
-    print("Entered Scrape")
     logger.info("Entered Scrape")
     logger.debug(f"Param passed: {key}, {page}")
 
@@ -77,14 +76,9 @@ def scrape(key, page):
     logger.debug(f"Url for request: {url}")
 
     logger.info("Making a request")
-    print(headers)
-    print(proxies)
     response = requests.get(url, headers=headers, proxies=proxies)
-    print(url)
-    print(response)
     if response.ok:
         logger.info("Respnose - Ok")
-        print("Respnose - Ok")
         logger.debug("Parssing HTML")
         page = bs(response.content)
         logger.info("HTML parssed")
@@ -92,7 +86,6 @@ def scrape(key, page):
         print(page.prettify())
         logger.debug("Looking for item divs : <div class='a-section a-spacing-medium'>")
         divs = page.find_all(class_="a-section a-spacing-medium")
-        print(divs)
         logger.debug("Divs")
         results = []
         for div in divs:
@@ -134,7 +127,6 @@ def scrape(key, page):
                 logger.warning("NOT FOUND. CONTINUE SEARCH")
         return results
     else:
-        print("Respnose - Failed")
         logger.info("Respnose - Failed")
         logger.warning(f"Error code: {response.status_code}")
         return None
