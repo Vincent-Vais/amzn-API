@@ -75,6 +75,7 @@ def scrape(key, page):
     print(headers)
     print(proxies)
     response = requests.get(url, headers=headers, proxies=proxies)
+    print(url)
     print(response)
     if response.ok:
         logger.info("Respnose - Ok")
