@@ -16,7 +16,7 @@ app = Flask(__name__)
 
 # @app.route("/<key>")
 @app.route("/")
-def parse(key):
+def parse():
     # if k == key:
     #     q_key = request.args.get("key")
     #     q_page = request.args.get("page")
