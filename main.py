@@ -19,7 +19,7 @@ def parse(key):
     print("Started")
     if k == key:
         print("keys are matching")
-        q_key = request.args.get("key")
+        q_key = request.args.get("key").replace(" ", "+")
         q_page = request.args.get("page")
         results = scrape(q_key, q_page)
     else:
