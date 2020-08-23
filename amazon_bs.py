@@ -84,9 +84,10 @@ def scrape(key, page):
         page = bs(response.content)
         logger.info("HTML parssed")
         logger.critical(f"{url}:{page.prettify()}")
-
+        print(page.prettify())
         logger.debug("Looking for item divs : <div class='a-section a-spacing-medium'>")
         divs = page.find_all(class_="a-section a-spacing-medium")
+        print(divs)
         logger.debug("Divs")
         results = []
         for div in divs:
