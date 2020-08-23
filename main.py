@@ -1,8 +1,9 @@
 from flask import Flask
 from flask import request
+
 from amazon_bs import scrape
 
-# from secrets import makeKey
+from secrets import makeKey
 import os
 import json
 
