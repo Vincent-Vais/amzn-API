@@ -72,7 +72,10 @@ def scrape(key, page):
     logger.debug(f"Url for request: {url}")
 
     logger.info("Making a request")
+    print(headers)
+    print(proxies)
     response = requests.get(url, headers=headers, proxies=proxies)
+    print(response)
     if response.ok:
         logger.info("Respnose - Ok")
         print("Respnose - Ok")
