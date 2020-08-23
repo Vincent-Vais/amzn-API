@@ -26,6 +26,7 @@ def parse():
     # return {"results": results}
     print("Started")
     q_key = request.args.get("key")
+    print(q_key)
     q_page = request.args.get("page")
     results = scrape(q_key, q_page)
     return {"results": results}
