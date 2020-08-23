@@ -11,16 +11,21 @@ app = Flask(__name__)
 
 # makeKey()
 
-k = os.environ["KEY"]
+# k = os.environ["KEY"]
 
 
-@app.route("/<key>")
+# @app.route("/<key>")
+@app.route("/")
 def parse(key):
-    if k == key:
-        q_key = request.args.get("key")
-        q_page = request.args.get("page")
-        results = scrape(q_key, q_page)
-    else:
-        results = None
+    # if k == key:
+    #     q_key = request.args.get("key")
+    #     q_page = request.args.get("page")
+    #     results = scrape(q_key, q_page)
+    # else:
+    #     results = None
+    # return {"results": results}
+    q_key = request.args.get("key")
+    q_page = request.args.get("page")
+    results = scrape(q_key, q_page)
     return {"results": results}
 
