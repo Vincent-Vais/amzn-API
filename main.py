@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import request
+from flask import Response
 
 from amazon_bs import scrape
 
@@ -22,12 +23,13 @@ def parse(key):
         q_key = request.args.get("key").replace(" ", "+")
         q_page = request.args.get("page")
         results = scrape(q_key, q_page)
-        return flask.Response(
-            {"results": results}, status_code=200, mimetype="application/json",
-        )
+        status_code = 200
     else:
         results = None
-        return flask.Response(
-            {"results": results}, status_code=404, mimetype="application/json",
-        )
+        status_code = 404
+    return (
+        json.dumps({"results": results}),
+        status_code,
+        {"ContentType": "application/json"},
+    )
 
