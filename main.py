@@ -23,7 +23,10 @@ def parse(key):
         q_key = request.args.get("key").replace(" ", "+")
         q_page = request.args.get("page")
         results = scrape(q_key, q_page)
-        status_code = 200
+        if len(results) == 0:
+            status_code = 404
+        else:
+            status_code = 200
     else:
         results = None
         status_code = 404
